@@ -646,45 +646,28 @@ p {
   max-width: 720px;
 }
 
-.indir p {
-  color: var(--sahne-soluk);
+.rozetler {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  margin-top: 26px;
 }
 
-.indir-dugmeler {
-  display: grid;
-  gap: 12px;
-  margin: 26px 0 18px;
+.rozetler a {
+  display: block;
+  transition: transform 0.15s ease;
 }
 
-.magaza {
-  display: grid;
-  gap: 2px;
-  padding: 14px 20px;
-  border-radius: 16px;
-  background: var(--sahne-yuzey);
-  border: 1px solid var(--sahne-kenar);
-  color: var(--sahne-ink);
-  text-decoration: none;
-  transition: border-color 0.15s ease;
+.rozetler a:hover {
+  transform: translateY(-2px);
 }
 
-.magaza:hover {
-  border-color: var(--amber);
-}
-
-.magaza-ust {
-  color: var(--sahne-soluk);
-  font-size: 12.5px;
-}
-
-.magaza-ad {
-  font-family: var(--baslik);
-  font-weight: 600;
-  font-size: 17px;
-}
-
-.indir-not {
-  font-size: 13.5px;
+.rozetler img {
+  display: block;
+  width: auto;
+  height: 56px;
 }
 
 /* ── SSS ─────────────────────────────────────────────── */
@@ -769,8 +752,7 @@ details p {
   }
 
   .kimler,
-  .planlar,
-  .indir-dugmeler {
+  .planlar {
     grid-template-columns: repeat(2, 1fr);
   }
 
