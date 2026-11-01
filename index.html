@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Aydix — Yapay zekâ destekli aydınlatma asistanı</title>
+    <meta
+      name="description"
+      content="Aydix, mekânınızın fotoğrafından mevcut ışığı analiz eder; doğru lux, Kelvin, CRI, armatür ve adaptörü hesaplayıp önerir. Önerinin mekânınızda nasıl görüneceğini de gösterir."
+    />
+    <meta name="theme-color" content="#10141D" />
+    <meta property="og:title" content="Aydix — Doğru ışığı tahmin etmeyin, hesaplayın" />
+    <meta
+      property="og:description"
+      content="Fotoğrafını çek, ölçüleri gir; Aydix doğru ışığı, ürünü ve adaptörü hesaplasın."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="tr_TR" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="stil.css" />
+  </head>
+  <body>
+    <header class="ust">
+      <div class="kap ust-ic">
+        <a class="logo" href="#" aria-label="Aydix ana sayfa">
+          <svg viewBox="0 0 320 120" aria-hidden="true">
+            <text x="20" y="90" class="logo-yazi">Aydıx</text>
+            <circle cx="218" cy="27" r="8.5" fill="#F59E0B" />
+          </svg>
+        </a>
+        <nav class="menu" aria-label="Sayfa bölümleri">
+          <a href="#nasil">Nasıl çalışır</a>
+          <a href="#ozellikler">Özellikler</a>
+          <a href="#planlar">Planlar</a>
+          <a href="#sss">SSS</a>
+        </nav>
+        <a class="dugme dugme-kucuk" href="#indir">Uygulamayı dene</a>
+      </div>
+    </header>
+
+    <main>
+      <!-- Kahraman: koyu sahne (Kelvin gradyanı yalnız koyu zeminde) -->
+      <section class="sahne kahraman">
+        <div class="kap kahraman-ic">
+          <div class="kahraman-metin">
+            <p class="rozet">Yapay zekâ destekli aydınlatma asistanı</p>
+            <h1>Doğru ışığı tahmin etmeyin, <span class="vurgu">hesaplayın.</span></h1>
+            <p class="giris">
+              Mekânınızın fotoğrafını çekin, ölçüleri girin. Aydix mevcut ışığı
+              analiz eder; doğru <strong>lux</strong>, <strong>Kelvin</strong>,
+              <strong>CRI</strong>, armatür ve adaptörü hesaplayıp önerir —
+              önerinin mekânınızda nasıl görüneceğini de gösterir.
+            </p>
+            <div class="eylemler">
+              <a class="dugme" href="#indir">Ücretsiz dene</a>
+              <a class="dugme dugme-hayalet" href="#nasil">Nasıl çalışır?</a>
+            </div>
+            <div class="kelvin-cizgi" aria-hidden="true"></div>
+            <p class="kelvin-etiket" aria-hidden="true">
+              <span>2700K</span><span>3000K</span><span>4000K</span><span>5000K</span><span>6500K</span>
+            </p>
+          </div>
+
+          <!-- Telefon: sonuç ekranının sade bir canlandırması -->
+          <div class="telefon" role="img" aria-label="Aydix sonuç ekranı örneği: kafe için 3000K, 300 lux, CRI 90 önerisi">
+            <div class="telefon-ekran">
+              <p class="tel-ust">Sonuç · Kafe · 42 m²</p>
+              <div class="tel-kart tel-sahne">
+                <p class="tel-baslik">Önerilen ışık</p>
+                <div class="tel-degerler">
+                  <div><b>3.000K</b><span>Işık rengi</span></div>
+                  <div><b>300</b><span>lux hedef</span></div>
+                  <div><b>CRI 90</b><span>Renk kalitesi</span></div>
+                </div>
+                <div class="tel-kelvin"><i style="left: 12%"></i></div>
+              </div>
+              <div class="tel-kart">
+                <p class="tel-baslik koyu">Hesap</p>
+                <ul class="tel-liste">
+                  <li><span>Şerit LED</span><b>18 m · 14,4 W/m</b></li>
+                  <li><span>Toplam güç</span><b>259,2 W</b></li>
+                  <li><span>Akım (24V)</span><b>10,8 A</b></li>
+                  <li><span>Adaptör</span><b>2× 24V 200W</b></li>
+                </ul>
+                <p class="tel-dipnot">%25 güvenlik payı + gerilim düşümü sınırı</p>
+              </div>
+              <div class="tel-kart tel-sahne tel-oncesonra">
+                <p class="tel-baslik">Nasıl görünecek?</p>
+                <div class="tel-anahtar"><span>Önce</span><span class="aktif">Sonra</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Nasıl çalışır -->
+      <section id="nasil" class="bolum">
+        <div class="kap">
+          <p class="ust-baslik">Nasıl çalışır</p>
+          <h2>Üç adımda doğru aydınlatma</h2>
+          <ol class="adimlar">
+            <li>
+              <span class="adim-no">1</span>
+              <h3>Fotoğrafını çek</h3>
+              <p>
+                Mekândan en fazla 3 fotoğraf. Yapay zekâ mevcut ışığın rengini ve
+                seviyesini tahmin eder — sonuç aralık olarak gösterilir, siz
+                düzeltebilirsiniz.
+              </p>
+            </li>
+            <li>
+              <span class="adim-no">2</span>
+              <h3>Ölçüleri gir</h3>
+              <p>
+                Mekân tipi, metrekare, tavan yüksekliği, iç/dış koşul, istediğiniz
+                atmosfer ve bütçe. Kafe, mağaza, ofis, ev… 13 mekân tipi hazır.
+              </p>
+            </li>
+            <li>
+              <span class="adim-no">3</span>
+              <h3>Öneriyi al</h3>
+              <p>
+                Hedef lux, Kelvin, CRI ve IP; ürün, metraj, adaptör, dimmer ve
+                devre sayısı. Hepsi gerekçesiyle, tek ekranda.
+              </p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- Öncesi / sonrası -->
+      <section class="bolum bolum-zemin">
+        <div class="kap iki-sutun">
+          <div>
+            <p class="ust-baslik">Yeni</p>
+            <h2>“Nasıl görünecek?”</h2>
+            <p>
+              Önerilen aydınlatmayı karar vermeden görün. Aydix, kendi
+              fotoğrafınızı önerilen ışık rengi ve armatürlerle yeniden çizer;
+              öncesi ile sonrası arasında geçiş yapıp görseli parmaklarınızla
+              yakınlaştırarak inceleyebilirsiniz.
+            </p>
+            <p class="kucuk-not">
+              Görsel temsilidir; rakamlar hesap motorundan gelir. Oluşturulan
+              görseller hesabınızda saklanır, analizi sonra açtığınızda da
+              görünür.
+            </p>
+          </div>
+          <figure class="oncesonra">
+            <div class="oda" id="oda" style="--konum: 55%">
+              <div class="oda-katman oda-once" aria-hidden="true">
+                <div class="oda-tavan"></div>
+                <div class="oda-masa"></div>
+                <div class="oda-masa oda-masa-2"></div>
+              </div>
+              <div class="oda-katman oda-sonra" aria-hidden="true">
+                <div class="oda-tavan"><i></i><i></i><i></i></div>
+                <div class="oda-serit"></div>
+                <div class="oda-masa"></div>
+                <div class="oda-masa oda-masa-2"></div>
+              </div>
+              <span class="oda-etiket sol">Önce</span>
+              <span class="oda-etiket sag">Sonra · 3.000K</span>
+              <div class="oda-cizgi" aria-hidden="true"></div>
+            </div>
+            <label class="kaydirac">
+              <span class="gizli">Öncesi ile sonrası arasında kaydırın</span>
+              <input id="oda-kaydirac" type="range" min="5" max="95" value="55" />
+            </label>
+            <figcaption>Temsili canlandırma — kaydırarak karşılaştırın</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- Özellikler -->
+      <section id="ozellikler" class="bolum">
+        <div class="kap">
+          <p class="ust-baslik">Özellikler</p>
+          <h2>Ustanın hesabı, tasarımcının gözü</h2>
+          <div class="ozellik-izgara">
+            <article class="ozellik">
+              <h3>Fotoğraftan ışık analizi</h3>
+              <p>Mevcut ışığın renk sıcaklığı ve seviyesi tahmin edilir; yetersiz noktalar işaretlenir.</p>
+            </article>
+            <article class="ozellik">
+              <h3>Hesap motoru, tahmin değil</h3>
+              <p>
+                Güç, akım, devre ve adaptör saf formüllerle hesaplanır:
+                <span class="mono">18 m × 14,4 W/m = 259,2 W · 10,8 A</span>.
+                Yapay zekâ sayı uydurmaz.
+              </p>
+            </article>
+            <article class="ozellik">
+              <h3>Ürün + adaptör + voltaj</h3>
+              <p>5V, 12V ya da 24V seçimi; gerilim düşümüne göre besleme noktaları ve %25 güvenlik paylı adaptör.</p>
+            </article>
+            <article class="ozellik">
+              <h3>Sohbetle düzenle</h3>
+              <p>“Spot istemiyorum”, “sadece sarkıt olsun” deyin; ihtiyaç sabit kalır, ürün seçimi değişir.</p>
+            </article>
+            <article class="ozellik">
+              <h3>Logolu PDF teklif</h3>
+              <p>Kalemler, metrajlar ve toplam tutarla müşterinize hazır teklif — kendi işletme logonuzla.</p>
+            </article>
+            <article class="ozellik">
+              <h3>Misafir olarak başla</h3>
+              <p>Hesap açmadan analiz yapın. Görsel önizleme için ücretsiz hesap yeter; geçmişiniz hesabınıza taşınır.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Kimler için -->
+      <section class="bolum bolum-zemin">
+        <div class="kap">
+          <p class="ust-baslik">Kimler için</p>
+          <h2>Sahada da, masada da</h2>
+          <div class="kimler">
+            <div><b>Elektrikçiler ve ustalar</b><span>Metraj, adaptör ve devre hesabı sahada, saniyeler içinde.</span></div>
+            <div><b>Mimarlar ve iç mimarlar</b><span>Atmosfere uygun Kelvin ve CRI; müşteriye öncesi/sonrası.</span></div>
+            <div><b>Mağaza ve kafe sahipleri</b><span>Ürünü doğru gösteren, göz yormayan ışık.</span></div>
+            <div><b>Evini yenileyenler</b><span>Salon, mutfak, banyo için doğru ışık ve IP sınıfı.</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Planlar -->
+      <section id="planlar" class="bolum">
+        <div class="kap">
+          <p class="ust-baslik">Planlar</p>
+          <h2>Ücretsiz başlayın</h2>
+          <div class="planlar">
+            <article class="plan">
+              <h3>Ücretsiz</h3>
+              <ul>
+                <li>Ayda 3 analiz</li>
+                <li>Ayda 5 sohbet mesajı</li>
+                <li>Temel öneri — Kelvin ve lux</li>
+                <li>1 “Nasıl görünecek?” denemesi</li>
+              </ul>
+            </article>
+            <article class="plan plan-one">
+              <p class="plan-rozet">Önerilen</p>
+              <h3>Pro</h3>
+              <ul>
+                <li>Sınırsız analiz ve sohbet</li>
+                <li>Ürün + adaptör + voltaj önerisi</li>
+                <li>Kendi logonuzla PDF teklif</li>
+                <li>Her analizde 2 görsel önizleme</li>
+              </ul>
+              <p class="plan-not">Aylık ya da yıllık. Kurumsal plan da mevcut.</p>
+            </article>
+          </div>
+          <p class="kucuk-not orta">
+            Güncel fiyatlar uygulamada, Google Play ve App Store fiyatıyla
+            gösterilir. Abonelik dönem sonunda otomatik yenilenir; mağaza
+            hesabınızdan istediğiniz zaman iptal edebilirsiniz.
+          </p>
+        </div>
+      </section>
+
+      <!-- İndir -->
+      <section id="indir" class="sahne indir">
+        <div class="kap indir-ic">
+          <h2>Aydix'i deneyin</h2>
+          <p>
+            Aydix şu an test sürecinde. Test programına katılın, mağazalarda
+            yayına girdiğinde güncellemeler otomatik gelsin.
+          </p>
+          <div class="indir-dugmeler">
+            <a class="magaza" href="https://play.google.com/apps/testing/com.aydix.app" rel="noopener">
+              <span class="magaza-ust">Android</span>
+              <span class="magaza-ad">Google Play test programı</span>
+            </a>
+            <a class="magaza" href="https://testflight.apple.com/join/xcr9HGcK" rel="noopener">
+              <span class="magaza-ust">iPhone</span>
+              <span class="magaza-ad">TestFlight ile katıl</span>
+            </a>
+          </div>
+          <p class="indir-not">
+            Android test programına katılmak için Google hesabınızın test
+            listesinde olması gerekir; eklenmek için bize yazın. iPhone için
+            önce App Store'dan TestFlight uygulamasını kurun.
+          </p>
+        </div>
+      </section>
+
+      <!-- SSS -->
+      <section id="sss" class="bolum">
+        <div class="kap dar">
+          <p class="ust-baslik">SSS</p>
+          <h2>Sık sorulanlar</h2>
+          <details>
+            <summary>Fotoğraflarım saklanıyor mu?</summary>
+            <p>
+              Analiz için yüklediğiniz fotoğraflar saklanmaz; yalnız analiz
+              anında işlenir. Tek istisna “Nasıl görünecek?”: bu özelliği
+              kullanırsanız fotoğrafın küçültülmüş kopyası ve üretilen görsel,
+              sonra yeniden görebilmeniz için hesabınızda saklanır. Geçmişte en
+              fazla 10 analiz tutulur; eskileri görselleriyle birlikte otomatik
+              silinir.
+            </p>
+          </details>
+          <details>
+            <summary>Hesap açmam gerekiyor mu?</summary>
+            <p>
+              Hayır. Uygulamayı açar açmaz misafir olarak analiz yapabilirsiniz.
+              “Nasıl görünecek?” görseli ve abonelik için ücretsiz bir hesap
+              gerekir; e-posta doğrulaması beklemeden hemen açılır ve misafir
+              geçmişiniz hesabınıza taşınır.
+            </p>
+          </details>
+          <details>
+            <summary>Öneriler ne kadar güvenilir?</summary>
+            <p>
+              Güç, akım, devre ve adaptör gibi tüm sayısal sonuçlar test edilmiş
+              formüllerle hesaplanır; yapay zekâ yalnız fotoğrafı yorumlar ve
+              gerekçe metni yazar. Fotoğraftan ışık tahmini her zaman bir aralık
+              olarak gösterilir. Kesin uygulama öncesi bir uzmana danışmanızı
+              öneririz.
+            </p>
+          </details>
+          <details>
+            <summary>Aboneliği nasıl iptal ederim?</summary>
+            <p>
+              Google Play ya da App Store hesabınızın abonelik ayarlarından,
+              dönem bitmeden en az 24 saat önce yenilemeyi kapatabilirsiniz.
+            </p>
+          </details>
+          <details>
+            <summary>Hesabımı nasıl silerim?</summary>
+            <p>
+              Uygulamada Profil → Hesabımı sil adımıyla ya da e-postayla. Ayrıntılar
+              <a href="https://sibel14.github.io/aydix-yasal/hesap-silme.html">Hesap Silme</a>
+              sayfasında.
+            </p>
+          </details>
+        </div>
+      </section>
+    </main>
+
+    <footer class="alt">
+      <div class="kap alt-ic">
+        <div>
+          <p class="alt-marka">Aydix</p>
+          <p>Katof Elektronik ve Dış Ticaret — Karaköy / İstanbul</p>
+          <p><a href="mailto:info@karakoyledshop.com">info@karakoyledshop.com</a></p>
+        </div>
+        <nav aria-label="Yasal">
+          <a href="https://sibel14.github.io/aydix-yasal/gizlilik.html">Gizlilik Politikası</a>
+          <a href="https://sibel14.github.io/aydix-yasal/kosullar.html">Kullanım Koşulları</a>
+          <a href="https://sibel14.github.io/aydix-yasal/hesap-silme.html">Hesap Silme</a>
+        </nav>
+      </div>
+      <p class="kap telif">© 2026 Aydix</p>
+    </footer>
+
+    <script>
+      // Öncesi/sonrası kaydıracı — yalnız görsel canlandırma
+      (function () {
+        var oda = document.getElementById('oda');
+        var kaydirac = document.getElementById('oda-kaydirac');
+        if (!oda || !kaydirac) return;
+        var guncelle = function () {
+          oda.style.setProperty('--konum', kaydirac.value + '%');
+        };
+        kaydirac.addEventListener('input', guncelle);
+        guncelle();
+      })();
+    </script>
+  </body>
+</html>
